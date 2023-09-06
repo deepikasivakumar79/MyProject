@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
-import InfoForm from "./form";
-import InfoTable from "./table";
+import StudentForm from "./form";
+import StudentTable from "./table";
 import axios from "axios";
 
 const App = () => {
-  const [data, datafunc] = useState([]);
+  const [data,  datafunc] = useState([]);
   const [editData, editdatafunc] = useState([]);
 
   const create = (data) => {
     if (data.isEdit === false) {
       axios
-        .post("http://localhost:5000/info/create", data)
+        .post("http://localhost:5000/student/create", data)
         .then((res) => {
           console.log("creation");
           getAll();
         });
     } else {
-      axios.put("http://localhost:5000/info/update", data).then((res) => {
+      axios.put("http://localhost:5000/student/update", data).then((res) => {
         console.log("updation");
         getAll();
       });
@@ -27,7 +27,7 @@ const App = () => {
   }, []);
 
   const getAll = () => {
-    axios.get("http://localhost:5000/info/get").then((res) => {
+    axios.get("http://localhost:5000/student/get").then((res) => {
       datafunc(res.data);
     });
   };
@@ -40,24 +40,24 @@ const App = () => {
 
     if (option) {
       axios
-        .delete(`http://localhost:5000/info/delete/${data._id}`)
+        .delete(`http://localhost:5000/student/delete/${data._id}`)
         .then((res) => {
          getAll();
         });
     }
   };
-  return (
-    <div className="container mt-4">
+  return(
+    <div className="container mt-5">
       <div className="row">
         <div className="col-3">
-          <InfoForm mydata={create} setForm={editData} />
+          <StudentForm mydata={create} setForm={editData} />
         </div>
         <div className="col-9">
-          <InfoTable getData={data} setData={update} del={del} />
+          <StudentTable getData={data} setData={update} del={del} />
         </div>
       </div>
     </div>
-  );
+ );
 };
 
 export default App;
