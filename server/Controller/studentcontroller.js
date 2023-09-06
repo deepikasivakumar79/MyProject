@@ -1,7 +1,7 @@
-import user from "../models/studentschema.js";
+import users from "../models/studentschema.js";
 
 export const createstudent = async (req, res) => {
-    const data = new user({
+    const data = new users({
         Name: req.body.Name,
         Course: req.body.Course,
         Contact: req.body.Contact,
@@ -14,14 +14,14 @@ export const createstudent = async (req, res) => {
 };
 
 export const getstudent = async (req, res) => {
-    const getAll = await user.find();
+    const getAll = await users.find();
     res.status(200).json(getAll)
     console.log("get the student data");
 };
 
 
 export const updatestudent = async (req, res) => {
-    const update = await user.findByIdAndUpdate(
+    const update = await users.findByIdAndUpdate(
         { _id: req.body._id },
         {
             $set: {
@@ -41,7 +41,7 @@ export const updatestudent = async (req, res) => {
 };
 
 export const deletestudent = async (req, res) => {
-    await user.findByIdAndDelete(req.params.id);
+    await users.findByIdAndDelete(req.params.id);
     console.log("deleted successfully");
 
 };

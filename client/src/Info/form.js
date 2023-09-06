@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-
-const InfoForm = (props) => {
+                                                   
+const StudentForm = (props) => {
   const [id, setid] = useState("");
   const [Name, setName] = useState("");
   const [Course, setCourse] = useState("");
@@ -92,4 +92,4 @@ const InfoForm = (props) => {
     </form>
   );
 };
-export default InfoForm;
+export default StudentForm;

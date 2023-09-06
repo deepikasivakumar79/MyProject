@@ -1,6 +1,6 @@
-const InfoTable = (props) => {
+const StudentTable = (props) => {
     return (
-      <table className="table table-dark">
+      <table className="table table-primary">
         <thead>
           <tr>
             <th>Name</th>
@@ -21,7 +21,7 @@ const InfoTable = (props) => {
                 <td>{e.Email}</td>
                 <td>
                   <button
-                    className="btn btn-success"
+                    className="btn btn-info"
                     onClick={(event) => {
                       props.setData(e);
                     }}
@@ -41,13 +41,11 @@ const InfoTable = (props) => {
                 </td>
               </tr>
             ))
-          ) : (
-            <tr>No Data</tr>
-          )}
+          ) : (<tr>No Data</tr>)}
         </tbody>
       </table>
     );
   };
   
-  export default InfoTable;
+  export default StudentTable;
   
